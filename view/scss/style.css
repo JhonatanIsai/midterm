@@ -1,0 +1,93 @@
+.headerMenu, .dropDownSection, .returnDisplay {
+  display: flex;
+  align-items: center;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #238be0;
+  color: white;
+}
+
+body header h1 {
+  padding: 10px;
+  border: 1px solid red;
+}
+
+body header h1 a {
+  text-decoration: none;
+  color: white;
+  color: #eed027;
+}
+
+.dropDown {
+  width: 200px;
+}
+
+.carDisplay {
+  border: 1px solid red;
+  min-height: 200px;
+}
+
+.headerMenu {
+  justify-content: center;
+  width: 100%;
+}
+
+.headerMenu p {
+  padding: 10px;
+}
+
+.headerMenu p a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}
+
+.headerMenu p a:hover {
+  font-size: 22px;
+  color: #eed027;
+}
+
+.dropDownSection {
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.dropDownSection .dropDown {
+  color: black;
+  background-color: whitesmoke;
+}
+
+.returnDisplay {
+  border: 1px solid green;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.returnDisplay table {
+  width: 90%;
+  border-collapse: collapse;
+}
+
+.returnDisplay table tr {
+  border: solid 2px black;
+}
+
+.returnDisplay table tr td {
+  padding-left: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.returnDisplay table th {
+  height: 20px;
+  background-color: #eed027;
+}
+/*# sourceMappingURL=style.css.map */

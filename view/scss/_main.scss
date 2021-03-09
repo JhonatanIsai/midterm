@@ -1,0 +1,110 @@
+$background_color: rgb(35, 139, 224);
+$text_color: white;
+$focus_color: rgb(238, 208, 39);
+
+
+%flex{
+    display: flex;
+    align-items: center;
+}
+@mixin flexColumn {
+    @extend %flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+@mixin flexCenter{
+    @extend %flex;
+    justify-content: center;
+}
+@mixin noDecour{
+    p{
+        padding: 10px;
+        
+        a{
+            text-decoration: none;
+            color: $text_color;
+            font-size: 20px;
+            &:hover{
+                font-size: 22px;
+                color: $focus_color;
+            }
+        }
+    }
+    
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+// Stuff that changes 
+body{
+    background-color: $background_color;
+    color:  $text_color;
+    header{
+        h1{
+            padding: 10px;
+            border: 1px solid red;
+            a{
+                text-decoration: none;
+                color: $text_color;
+              color: $focus_color;
+                
+            }
+        }
+    }
+}
+
+.option{}
+.dropDown{
+    width: 200px;
+}
+
+.carDisplay{
+    border: 1px solid red;
+
+    min-height: 200px;
+}
+.headerMenu{
+    @include flexCenter();
+    @include noDecour();
+    width: 100%;
+}
+
+.dropDownSection{
+    @include flexColumn();
+    .dropDown{
+        color: black;
+        background-color:whitesmoke;
+    }
+}
+.returnDisplay{
+    border: 1px solid green;
+    @include flexColumn();
+    width: 100%;
+table{
+    width: 90%;
+    border-collapse: collapse;
+    
+    tr{
+        border: solid 2px black;
+        
+        td{
+            padding-left: 5px;
+            padding-top: 2px;
+            padding-bottom: 2px;
+        }
+        
+    }
+    th{
+        height: 20px;
+        background-color: $focus_color; //Might change 
+    }
+}
+}
+
+.removeBttn{
+    background-color: $focus_color;
+}
