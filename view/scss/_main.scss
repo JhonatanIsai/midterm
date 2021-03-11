@@ -108,3 +108,28 @@ table{
 .removeBttn{
     background-color: $focus_color;
 }
+
+.button{
+    min-width: 45px;
+    max-width: 75px;
+    border-radius: 10px;
+}
+
+.footerForm{
+    border: red 1px solid;
+    @include flexColumn();
+    padding-top: 20px;
+    
+    .button{
+        padding:10px 10px 10px 10px;
+        min-width: 45px;
+        background-color: $focus_color;
+        min-height: 45px;
+        
+    div{
+        padding-top: 10px;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+}

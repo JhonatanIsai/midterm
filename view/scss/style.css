@@ -1,4 +1,4 @@
-.headerMenu, .dropDownSection, .returnDisplay {
+.headerMenu, .dropDownSection, .returnDisplay, .footerForm {
   display: flex;
   align-items: center;
 }
@@ -89,5 +89,33 @@ body header h1 a {
 .returnDisplay table th {
   height: 20px;
   background-color: #eed027;
+}
+
+.removeBttn {
+  background-color: #eed027;
+}
+
+.button {
+  min-width: 45px;
+  max-width: 75px;
+}
+
+.footerForm {
+  border: red 1px solid;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 20px;
+}
+
+.footerForm .button {
+  padding: 10px 10px 10px 10px;
+  min-width: 45px;
+  background-color: #eed027;
+  min-height: 45px;
+  border-radius: 10px;
+}
+
+.footerForm div {
+  padding-top: 10px;
 }
 /*# sourceMappingURL=style.css.map */

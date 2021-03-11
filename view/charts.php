@@ -1,3 +1,4 @@
+
 <?php 
        function display($chart){
         $output ="";
@@ -122,6 +123,60 @@
         return $output;
     }
 
+    function displayMakes($chart){
+        $output ="";
     
+        $output .= "<div class='returnDisplay'>";
+        $output .= "<h2>Invetory</h2>";
+        $output .= "<table class='resultTable'>";
+        $output .= "<tr>";
+        $output .=    "<th>Make</th>";
+        $output .=    "<th><tb></th>";
+        $output .=      "</tr>";
+        foreach ($chart as $car){
+            //MakeFunction from this
+            $output .= "<div class='eachCar'>";
+            $output .= "<tr>";
+
+            $output .= "<td>".$car['make']."</td>";
+
+            $output.= "<td>"."<button='removeBttn'>Remove</button>"."</td>";
+
+            $output .="</tr>";
+            $output .="</div>";
+        }
+
+        $output .="</table>";
+        $output .="</div>";
+        return $output;
+    }
+
+    function displayType($chart){
+        $output ="";
+    
+        $output .= "<div class='returnDisplay'>";
+        $output .= "<h2>Invetory</h2>";
+        $output .= "<table class='resultTable'>";
+        $output .= "<tr>";
+        $output .=    "<th>Make</th>";
+        $output .=    "<th><tb></th>";
+        $output .=      "</tr>";
+        foreach ($chart as $car){
+            //MakeFunction from this
+            $output .= "<div class='eachCar'>";
+            $output .= "<tr>";
+
+            $output .= "<td>".$car['type']."</td>";
+
+            $output.= "<td>"."<button='removeBttn'>Remove</button>"."</td>";
+
+            $output .="</tr>";
+            $output .="</div>";
+        }
+
+        $output .="</table>";
+        $output .="</div>";
+        return $output;
+    }
 
 ?>

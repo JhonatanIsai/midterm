@@ -1,52 +1,63 @@
-
-
-<?php   require("../view/header.php");
-    require("</model/makes_db.php"); //HERE
-    require(".../model/type_db.php"); //HERE
-    require("../model/classes_db.php"); //HERE
-    require("../model/database_db.php");
-    require("../model/database.php");
-    require("../view/charts.php");?>
-
-
 <?php 
-    $newYear = filter_input(INPUT_POST, "newYear", FILTER_SANITIZE_NUMBER_INT);
-    $newMake = filter_input(INPUT_POST, "newMake", FILTER_SANITIZE_STRING);
-    $newModel = filter_input(INPUT_POST, "newModel", FILTER_SANITIZE_STRING);
-    $newType = filter_input(INPUT_POST, "newType", FILTER_SANITIZE_STRING);
-    $newClass = filter_input(INPUT_POST, "newClass", FILTER_SANITIZE_STRING);
-    $newPrice = filter_input(INPUT_POST, "newPrice", FILTER_SANITIZE_NUMBER_INT);
+        
+        require("./model/type_db.php");
+        require("./model/makes_db.php");
+        require("./model/classes_db.php");
+        global $newCarPrice;
 
 ?>
 
-<?php if(!$newYear || !$newMake || !$newModel || !$newType || !$newClass || !$newPrice){?>
 <section>
     <h2>Add Vehicle</h2>
-    <form action ="<?php echo $_SERVER["PHP_SELF"]?>" method="POST">
+    <form class="dropDownSection" action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST">
 
-        <?php require("../view/dropdown_menu.php");?>
-        <label for="newPrice"> Year:</label>
-        <input type="text" id="newYear" name="newYear" maxlength="4" required>
+        <!--Selector for Makes-->
+        <label for="newCarMake"> Make:</label>
+        <select class="dropDown" name="newCarMake" id="newCarMake" default="field">
+            <option value="" disabled selected>Choose Make</option>
+            <?php foreach (getAllMakes() as $makes) : ?>
+                <option class="option" value="<?php echo intval($makes["ID"]); ?>"><?php echo $makes["make"]; ?></option>
 
-        <label for="newMake"> Make:</label>
-        <input type="text" id="newMake" name="newMake" required>
+            <?php endforeach ?>
+        </select>
 
-        <label for="newModel"> Model:</label>
-        <input type="text" id="newModel" name="newModel" required>
+        <!--Selector for Types-->
+        <label for="newCarType"> Type:</label>
+        <select class="dropDown" name="newCarType" id="newCarType" default="field">
+            <option value="" disabled selected>Choose Type</option>
+            <?php foreach (getAllType() as $types) : ?>
+                <option class="option" value="<?php echo intval($types["ID"]); ?>"><?php echo $types["type"]; ?></option>
 
-        <label for="newType"> Type:</label>
-        <input type="text" id="newType" name="newType" required>
+            <?php endforeach ?>
+        </select>
 
-        <label for="newClass"> Class:</label>
-        <input type="text" id="newClass" name="newClass" required>
+        <!--Selector for Class-->
+        <label for="newCarClass"> Class:</label>
+        <select class="dropDown" name="newCarClass" id="newCarClass" default="field">
+            <option value="" disabled selected>Choose Class</option>
+            <?php foreach (getAllClasses() as $classes) : ?>
+                <option class="option" value="<?php echo intval($classes["ID"]); ?>"><?php echo $classes["class"]; ?></option>
 
-        <label for="newPrice"> Price:</label>
-        <input type="text" id="newPrice" name="newPrice" maxlength="7" required>
+            <?php endforeach ?>
+        </select>
 
-        <button>Submit</button>
+        <!--New car year-->
+        <label for="newCarYear"> Year:</label>
+        <input class="dropDown" type="text" id="newCarYear" name="newCarYear" maxlength="4" required>
+
+
+
+        <!--New car model-->
+        <label for="newCarModel"> Model:</label>
+        <input class="dropDown" type="text" id="newCarModel" name="newCarModel" required>
+
+
+
+        <!--New car prize-->
+        <label for="newCarPrice"> Price:</label>
+        <input class="dropDown" type="text" id="newCarPrice" name="newCarPrice" maxlength="7" required>
+
+
+        <input type="submit" name="submitCar" value="Submit Car">
     </form>
 </section>
-
-<?php };?> 
-
-<?php require("../view/admin_footer.php");?>
