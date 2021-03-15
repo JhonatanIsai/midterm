@@ -1,7 +1,7 @@
 
 
 <section>
-    <h2>Add Vehicle Make</h2>
+    <h2>Add Vehicle Type</h2>
     <form class="dropDownSection" action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST">
     <?php 
         $chosenChart = getAllType();
@@ -14,7 +14,7 @@
         <!--New car prize-->
         <h2>Add Vehicle Type</h2>
         <label for="newType"> New Type:</label>
-        <input class="dropDown" type="text" id="newType" name="newType"  required>
+        <input class="dropDown" type="text" id="newType" name="newType" >
 
 
         <input type="submit" name="submitType" value="Submit Type">

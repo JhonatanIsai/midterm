@@ -39,12 +39,12 @@ function addClass($class)
     $statement->closeCursor();
 }
 
-function removeClass($class)
+function removeClass($ID)
 {
     global $db;
-    $query = "DELETE FROM Class WHERE class = :class";
+    $query = "DELETE FROM Class WHERE class.ID = :ID";
     $statement = $db->prepare($query);
-    $statement->bindValue(":class", $class);
+    $statement->bindValue(":ID", $ID);
     $statement->execute();
     $statement->closeCursor();
 }

@@ -35,12 +35,12 @@ function addType($type)
     $statement->closeCursor();
 }
 
-function removeType($type)
+function removeType($ID)
 {
     global $db;
-    $query = "DELETE FROM Type WHERE type = :type";
+    $query = "DELETE FROM Type WHERE Type.ID = :ID";
     $statement = $db->prepare($query);
-    $statement->bindValue(":type", $type);
+    $statement->bindValue(":ID", $ID);
     $statement->execute();
     $statement->closeCursor();
 }

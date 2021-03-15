@@ -33,12 +33,12 @@ function addMake($make)
     $statement->execute();
     $statement->closeCursor();
 }
-function removeMake($make)
+function removeMake($ID)
 {
     global $db;
-    $query = "DELETE FROM Make WHERE make = :make";
+    $query = "DELETE FROM Make WHERE Make.ID= :ID";
     $statement = $db->prepare($query);
-    $statement->bindValue(":make", $make);
+    $statement->bindValue(":ID", $ID);
     $statement->execute();
     $statement->closeCursor();
 }

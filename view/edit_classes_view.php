@@ -13,7 +13,7 @@
         <!--New car prize-->
         <h2>Add Vehicle Class</h2>
         <label for="newClass"> New Class:</label>
-        <input class="dropDown" type="text" id="newClass" name="newClass"  required>
+        <input class="dropDown" type="text" id="newClass" name="newClass">
 
 
         <input type="submit" name="submitClass" value="Submit Class">

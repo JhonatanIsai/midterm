@@ -119,6 +119,73 @@ function editClassView()
 ?>
 
 <?php
+//Function checks if the newItem is present in the  $array
+function checkIfExistMake($newMake, $array)
+{   $Exist = False;
+    $newItem = strtolower($newMake);
+
+ for($i=0;$i<sizeof($array);$i++){
+     $arrayItem= strtolower($array[$i][1]);
+     echo $arrayItem."   ";
+     
+
+    if($newItem == strtolower($arrayItem)){
+        //echo "New item already exists in database.";
+        $Exist = True;
+        return 0;
+    }
+ }
+ echo $Exist;
+ if($Exist == False){
+    addMake($newMake);
+ }
+}
+
+function checkIfExistType($newItem, $array)
+{   $Exist = False;
+    $newItem = strtolower($newItem);
+
+ for($i=0;$i<sizeof($array);$i++){
+     $arrayItem= strtolower($array[$i][1]);
+     echo $arrayItem."   ";
+     
+
+    if($newItem == strtolower($arrayItem)){
+        //echo "New item already exists in database.";
+        $Exist = True;
+        return 0;
+    }
+ }
+ echo $Exist;
+ if($Exist == False){
+    addType($newItem);
+ }
+}
+
+function checkIfExistClass($newItem, $array)
+{   $Exist = False;
+    $newItem = strtolower($newItem);
+
+ for($i=0;$i<sizeof($array);$i++){
+     $arrayItem= strtolower($array[$i][1]);
+     echo $arrayItem."   ";
+     
+
+    if($newItem == strtolower($arrayItem) || $newItem == " "){
+        //echo "New item already exists in database.";
+        $Exist = True;
+        return 0;
+    }
+ }
+ echo $Exist;
+ if($Exist == False){
+    addClass($newItem);
+ }
+}
+?>
+
+
+<?php
 // ................................Main..................................
 
 require("./model/makes_db.php"); //Thisa works for all So far 
@@ -145,7 +212,7 @@ $carClass = filter_input(INPUT_POST, "dropDownClass", FILTER_SANITIZE_NUMBER_INT
 $orderPrice  = filter_input(INPUT_POST, "price", FILTER_SANITIZE_STRING);
 $orderYear = filter_input(INPUT_POST, "year", FILTER_SANITIZE_STRING);
 $editChoice = filter_input(INPUT_POST, "admin_edit", FILTER_SANITIZE_STRING);
-
+//...................................................................................
 $newCarMake = filter_input(INPUT_POST, "newCarMake",  FILTER_SANITIZE_NUMBER_INT);
 $newCarType = filter_input(INPUT_POST, "newCarType", FILTER_SANITIZE_NUMBER_INT);
 $newCarClass = filter_input(INPUT_POST, "newCarClass", FILTER_SANITIZE_NUMBER_INT);
@@ -158,7 +225,29 @@ $submitCar = filter_input(INPUT_POST, "submitCar", FILTER_SANITIZE_STRING);
 //........................................................................................
 $newMake = filter_input(INPUT_POST, "newMake", FILTER_SANITIZE_STRING);
 $newType = filter_input(INPUT_POST, "newType", FILTER_SANITIZE_STRING);
-$newClass = filter_input(INPUT_POST, "newType", FILTER_SANITIZE_STRING);
+$newClass = filter_input(INPUT_POST, "newClass", FILTER_SANITIZE_STRING);
+//..................................................................................
+$classNumber = filter_input(INPUT_POST, "removeClass", FILTER_SANITIZE_NUMBER_INT);
+$MakeNumber = filter_input(INPUT_POST, "removeMake", FILTER_SANITIZE_NUMBER_INT);
+$TypeNumber = filter_input(INPUT_POST, "removeType", FILTER_SANITIZE_NUMBER_INT);
+
+echo $classNumber;
+
+
+
+
+if($classNumber)
+{
+   removeClass($classNumber);
+}
+elseif($MakeNumber){
+
+    removeMake($MakeNumber);
+}
+elseIf($TypeNumber){
+
+    removeType($TypeNumber);
+}
 
 
 //Make sure i call like this otherwise it wont work 
@@ -166,14 +255,14 @@ $newClass = filter_input(INPUT_POST, "newType", FILTER_SANITIZE_STRING);
 if ($newCarYear && $newCarMake && $newCarModel && $newCarClass && $newCarType && $newCarPrice) {
     insertNewCar($newCarYear, $newCarMake, $newCarModel, $newCarType, $newCarClass,  $newCarPrice);
 } elseif (!empty($newMake)) {
-    
-    addMake($newMake);
+    checkIfExistMake($newMake,getAllMakes());
+
 } elseif (!empty($newType)) {
-   
-    addType($newType);
+    checkIfExistType($newType, getAllType());
+
 } elseif (!empty($newClass)) {
+    checkIfExistClass($newClass, getAllClasses());
     
-    addClass($newClass);
 }
 
 
