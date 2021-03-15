@@ -1,5 +1,4 @@
 <?php
-
 function numberOfMakes()
 {
     global $db;
@@ -23,6 +22,7 @@ function getAllMakes()
     return $s;
 };
 //......................................................................................
+//Adds a new make 
 function addMake($make)
 {
     global $db;

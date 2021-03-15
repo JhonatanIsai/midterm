@@ -1,4 +1,4 @@
-<?php require("./model/makes_db.php");
+<?php// require("./model/makes_db.php");
 ?>
   
 <section>

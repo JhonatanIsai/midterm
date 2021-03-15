@@ -3,11 +3,16 @@
 {
     if (!$carType || !$carMake || !$carClass || !$orderPrice || !$orderYear) {
 
-        require("./model/makes_db.php"); //HERE
-        require("./model/type_db.php"); //HERE
+        try{
+        //require("./model/makes_db.php"); //HERE
+        //require("./model/type_db.php"); //HERE
         require("./model/classes_db.php"); //HERE
         require("./model/database_db.php");
         require("./view/dropdown_menu.php");
+        }catch(Exception  $e){
+            Echo "Error loading required files...... Please try again.";
+        }
+        try{
         $chosenChart = getAllByYear();
         if (!empty($carType) && (!empty($carClass) || !empty($carMake))) {
             echo "<h2> Choose Only one option from dropdown menu. </h2>"; //Center
@@ -45,14 +50,19 @@
             } elseif (!empty($orderYear) && !$orderPrice) {
                 $chosenChart = getAllByYear();
             }
-        }
-        echo displayWithDelete($chosenChart);
+        
+        }echo displayWithDelete($chosenChart); // Moved yhis !!!
+    }catch(Exception  $e){
+        echo "Critical Error occoured... Please try again alter";
+    }finally{
+         require("./view/admin_footer.php"); // Make sure theres alwyas a menu
+    }
     }
     //..........................................
 
 
 
-    require("./view/admin_footer.php");
+   
 } ?>
 
 <?php
@@ -60,7 +70,7 @@ function addVehicleView($newCarYear, $newCarMake, $newCarModel, $newCarClass, $n
 {
 
     if (!$newCarYear && !$newCarMake && !$newCarModel && !$newCarClass && !$newCarType && !$newCarPrice) {
-        require("./view/add_vehicle.php");
+        require("./view/add_vehicle_view.php");
     } else {
         insertNewCar($newCarYear, $newCarMake, $newCarModel, $newCarClass, $newCarType, $newCarPrice);
     }
@@ -69,7 +79,7 @@ function addVehicleView($newCarYear, $newCarMake, $newCarModel, $newCarClass, $n
 
 <?php 
     function editMakeView(){
-        require("./view/edit_makes.php");
+        require("./view/edit_makes_view.php");
         require("./view/admin_footer.php");
     }
 
@@ -84,7 +94,13 @@ function addVehicleView($newCarYear, $newCarMake, $newCarModel, $newCarClass, $n
 ?>
 
 <?php
-  
+// ................................Main..................................
+
+require("./model/makes_db.php"); //Thisa works for all So far 
+require("./model/type_db.php");
+
+
+
 require("./view/header.php");
 
 require("./model/database.php");
@@ -124,11 +140,11 @@ if ($newCarYear && $newCarMake && $newCarModel && $newCarClass && $newCarType &&
     insertNewCar($newCarYear, $newCarMake, $newCarModel, $newCarType, $newCarClass,  $newCarPrice);
 }
 elseif(!empty($newMake)){
-    require("./model/makes_db.php");
+    //require("./model/makes_db.php"); //Remove
     addMake($newMake);
 }
 elseif(!empty($newType)){
-    require("./model/Type_db.php");
+    //require("./model/Type_db.php");
     addType($newType);
 }
 

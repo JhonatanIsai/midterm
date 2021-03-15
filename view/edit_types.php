@@ -1,7 +1,5 @@
 
-<?php require("./model/type_db.php");
-?>
-  
+
 <section>
     <h2>Add Vehicle Make</h2>
     <form class="dropDownSection" action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST">
