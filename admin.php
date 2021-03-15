@@ -3,66 +3,68 @@
 {
     if (!$carType || !$carMake || !$carClass || !$orderPrice || !$orderYear) {
 
-        try{
-        //require("./model/makes_db.php"); //HERE
-        //require("./model/type_db.php"); //HERE
-        require("./model/classes_db.php"); //HERE
-        require("./model/database_db.php");
-        require("./view/dropdown_menu.php");
-        }catch(Exception  $e){
-            Echo "Error loading required files...... Please try again.";
+        try {
+            //require("./model/makes_db.php"); //HERE
+            //require("./model/type_db.php"); //HERE
+            //require("./model/classes_db.php"); //HERE
+            require("./model/database_db.php");
+            // For drop Down Menu//
+            require("./view/dropdown_menu.php");
+        } catch (Exception  $e) {
+            echo "Error loading required files...... Please try again.";
         }
-        try{
-        $chosenChart = getAllByYear();
-        if (!empty($carType) && (!empty($carClass) || !empty($carMake))) {
-            echo "<h2> Choose Only one option from dropdown menu. </h2>"; //Center
-        } elseif (!empty($carClass) && (!empty($carType) || !empty($carMake))) {
-            echo "<h2> Choose Only one option from dropdown menu. </h2>"; //Center
-        } elseif (!empty($carMake) && (!empty($carClass) || !empty($carType))) {
-            echo "<h2> Choose Only one option from dropdown menu. </h2>"; //Center
-        } else {
-            if (!empty($carType)) {
-                if (!empty($orderPrice) && !$orderYear) {
-                    $chosenChart = getTypeByPrice($carType);
+        try {
+
+            $chosenChart = getAllByYear();
+            if (!empty($carType) && (!empty($carClass) || !empty($carMake))) {
+                echo "<h2> Choose Only one option from dropdown menu. </h2>"; //Center
+            } elseif (!empty($carClass) && (!empty($carType) || !empty($carMake))) {
+                echo "<h2> Choose Only one option from dropdown menu. </h2>"; //Center
+            } elseif (!empty($carMake) && (!empty($carClass) || !empty($carType))) {
+                echo "<h2> Choose Only one option from dropdown menu. </h2>"; //Center
+            } else {
+                if (!empty($carType)) {
+                    if (!empty($orderPrice) && !$orderYear) {
+                        $chosenChart = getTypeByPrice($carType);
+                    } elseif (!empty($orderYear) && !$orderPrice) {
+                        $chosenChart = getTypeByYear($carType);
+                    } else {
+                        $chosenChart = getAllByType($carType);
+                    }
+                } elseif (!empty($carClass)) {
+                    if (!empty($orderPrice) && !$orderYear) {
+                        $chosenChart = getClassByPrice($carClass);
+                    } elseif (!empty($orderYear) && !$orderPrice) {
+                        $chosenChart = getClassByYear($carClass);
+                    } else {
+                        $chosenChart = getAllByClass($carClass);
+                    }
+                } elseif (!empty($carMake)) {
+                    if (!empty($orderPrice) && !$orderYear) {
+                        $chosenChart = getMakeByPrice($carMake);
+                    } elseif (!empty($orderYear) && !$orderPrice) {
+                        $chosenChart = getMakeByYear($carMake);
+                    } else {
+                        $chosenChart = getAllByMake($carMake);
+                    }
+                } elseif (!empty($orderPrice) && !$orderYear) {
+                    $chosenChart = getAllByPrice();
                 } elseif (!empty($orderYear) && !$orderPrice) {
-                    $chosenChart = getTypeByYear($carType);
-                } else {
-                    $chosenChart = getAllByType($carType);
+                    $chosenChart = getAllByYear();
                 }
-            } elseif (!empty($carClass)) {
-                if (!empty($orderPrice) && !$orderYear) {
-                    $chosenChart = getClassByPrice($carClass);
-                } elseif (!empty($orderYear) && !$orderPrice) {
-                    $chosenChart = getClassByYear($carClass);
-                } else {
-                    $chosenChart = getAllByClass($carClass);
-                }
-            } elseif (!empty($carMake)) {
-                if (!empty($orderPrice) && !$orderYear) {
-                    $chosenChart = getMakeByPrice($carMake);
-                } elseif (!empty($orderYear) && !$orderPrice) {
-                    $chosenChart = getMakeByYear($carMake);
-                } else {
-                    $chosenChart = getAllByMake($carMake);
-                }
-            } elseif (!empty($orderPrice) && !$orderYear) {
-                $chosenChart = getAllByPrice();
-            } elseif (!empty($orderYear) && !$orderPrice) {
-                $chosenChart = getAllByYear();
             }
-        
-        }echo displayWithDelete($chosenChart); // Moved yhis !!!
-    }catch(Exception  $e){
-        echo "Critical Error occoured... Please try again alter";
-    }finally{
-         require("./view/admin_footer.php"); // Make sure theres alwyas a menu
-    }
+            echo displayWithDelete($chosenChart); // Moved yhis !!!
+        } catch (Exception  $e) {
+            echo "Critical Error occoured... Please try again alter";
+        } finally {
+            require("./view/admin_footer.php"); // Make sure theres alwyas a menu
+        }
     }
     //..........................................
 
 
 
-   
+
 } ?>
 
 <?php
@@ -77,20 +79,43 @@ function addVehicleView($newCarYear, $newCarMake, $newCarModel, $newCarClass, $n
     require("./view/admin_footer.php");
 } ?>
 
-<?php 
-    function editMakeView(){
+<?php
+function editMakeView()
+{
+    try {
         require("./view/edit_makes_view.php");
+    } catch (Exception $e) {
+        echo "Error Loading view..";
+    } finally {
         require("./view/admin_footer.php");
     }
+}
 
 ?>
 
 <?php
-    function editTypeView(){
+function editTypeView()
+{
+    try {
         require("./view/edit_types.php");
+    } catch (Exception $e) {
+        echo "Error Loading view..";
+    } finally {
         require("./view/admin_footer.php");
-
     }
+}
+?>
+<?php
+function editClassView()
+{
+    try {
+        require("./view/edit_classes_view.php");
+    } catch (Exception $e) {
+        echo "Error Loading view..";
+    } finally {
+        require("./view/admin_footer.php");
+    }
+}
 ?>
 
 <?php
@@ -98,6 +123,7 @@ function addVehicleView($newCarYear, $newCarMake, $newCarModel, $newCarClass, $n
 
 require("./model/makes_db.php"); //Thisa works for all So far 
 require("./model/type_db.php");
+require("./model/classes_db.php"); // here if 
 
 
 
@@ -132,42 +158,38 @@ $submitCar = filter_input(INPUT_POST, "submitCar", FILTER_SANITIZE_STRING);
 //........................................................................................
 $newMake = filter_input(INPUT_POST, "newMake", FILTER_SANITIZE_STRING);
 $newType = filter_input(INPUT_POST, "newType", FILTER_SANITIZE_STRING);
+$newClass = filter_input(INPUT_POST, "newType", FILTER_SANITIZE_STRING);
 
 
 //Make sure i call like this otherwise it wont work 
 //Ask professor dave how to make this better
 if ($newCarYear && $newCarMake && $newCarModel && $newCarClass && $newCarType && $newCarPrice) {
     insertNewCar($newCarYear, $newCarMake, $newCarModel, $newCarType, $newCarClass,  $newCarPrice);
-}
-elseif(!empty($newMake)){
-    //require("./model/makes_db.php"); //Remove
+} elseif (!empty($newMake)) {
+    
     addMake($newMake);
-}
-elseif(!empty($newType)){
-    //require("./model/Type_db.php");
+} elseif (!empty($newType)) {
+   
     addType($newType);
+} elseif (!empty($newClass)) {
+    
+    addClass($newClass);
 }
 
 
 if ($editChoice == "default") {
     defaultView($carType, $carClass, $carMake, $orderPrice, $orderYear);
-
 } elseif ($editChoice == "addVehicle") {
-  
-    addVehicleView($newCarYear, $newCarMake, $newCarModel, $newCarClass, $newCarType, $newCarPrice);
-}
-elseif($editChoice == "make"){
-    editMakeView();
-}
-elseif($editChoice == "type"){
-    editTypeView();
-}
-elseif($editChoice == "class"){
-    
-}
-else{
-    return defaultView($carType, $carClass, $carMake, $orderPrice, $orderYear);
 
+    addVehicleView($newCarYear, $newCarMake, $newCarModel, $newCarClass, $newCarType, $newCarPrice);
+} elseif ($editChoice == "make") {
+    editMakeView();
+} elseif ($editChoice == "type") {
+    editTypeView();
+} elseif ($editChoice == "class") {
+    editClassView();
+} else {
+    return defaultView($carType, $carClass, $carMake, $orderPrice, $orderYear);
 }
 
 

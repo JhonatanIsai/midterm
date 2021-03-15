@@ -1,12 +1,10 @@
-<?php require("./model/makes_db.php");
-?>
-  
+
 <section>
     <h2>Add Vehicle Class</h2>
     <form class="dropDownSection" action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST">
     <?php 
-        $chosenChart = getAllClasss();
-        echo displayClasss($chosenChart);
+        $chosenChart = getAllClasses();
+        echo displayClassesDel($chosenChart);
     ?>
 
 
