@@ -6,10 +6,6 @@
         $chosenChart = getAllClasses();
         echo displayClassesDel($chosenChart);
     ?>
-
-
-
-
         <!--New car prize-->
         <h2>Add Vehicle Class</h2>
         <label for="newClass"> New Class:</label>

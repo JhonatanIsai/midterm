@@ -16,7 +16,6 @@ body {
 
 body header h1 {
   padding: 10px;
-  border: 1px solid red;
 }
 
 body header h1 a {
@@ -30,7 +29,6 @@ body header h1 a {
 }
 
 .carDisplay {
-  border: 1px solid red;
   min-height: 200px;
 }
 
@@ -93,6 +91,7 @@ body header h1 a {
 
 .removeBttn {
   background-color: #eed027;
+  border-radius: 10px;
 }
 
 .button {
@@ -102,10 +101,10 @@ body header h1 a {
 }
 
 .footerForm {
-  border: red 1px solid;
   flex-direction: column;
   justify-content: flex-start;
-  padding-top: 20px;
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 
 .footerForm .button {

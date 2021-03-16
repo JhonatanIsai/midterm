@@ -1,6 +1,7 @@
-$background_color: rgb(35, 139, 224);
+$background_color:rgb(35, 139, 224) ;
 $text_color: white;
 $focus_color: rgb(238, 208, 39);
+//$focus_color: red;
 
 
 %flex{
@@ -46,11 +47,11 @@ body{
     header{
         h1{
             padding: 10px;
-            border: 1px solid red;
+          
             a{
                 text-decoration: none;
                 color: $text_color;
-              color: $focus_color;
+                color: $focus_color;
                 
             }
         }
@@ -63,8 +64,6 @@ body{
 }
 
 .carDisplay{
-    border: 1px solid red;
-
     min-height: 200px;
 }
 .headerMenu{
@@ -107,30 +106,11 @@ table{
 
 .removeBttn{
     background-color: $focus_color;
+    border-radius: 10px;
 }
 
 .button{
     min-width: 45px;
     max-width: 75px;
     border-radius: 10px;
-}
-
-.footerForm{
-    border: red 1px solid;
-    @include flexColumn();
-    padding-top: 20px;
-    
-    .button{
-        padding:10px 10px 10px 10px;
-        min-width: 45px;
-        background-color: $focus_color;
-        min-height: 45px;
-        
-    div{
-        padding-top: 10px;
-        padding-right: 10px;
-        padding-left: 10px;
-    }
-
-}
 }

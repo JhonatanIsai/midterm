@@ -237,16 +237,16 @@ echo $classNumber;
 
 
 if($classNumber)
-{
-   removeClass($classNumber);
+{   removeClass($classNumber);
+    
 }
 elseif($MakeNumber){
-
     removeMake($MakeNumber);
+    
 }
 elseIf($TypeNumber){
-
     removeType($TypeNumber);
+    
 }
 
 
@@ -280,9 +280,6 @@ if ($editChoice == "default") {
 } else {
     return defaultView($carType, $carClass, $carMake, $orderPrice, $orderYear);
 }
-
-
-
 
 ?>
 
