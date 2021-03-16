@@ -8,7 +8,7 @@
     
     //Try to connect tot he data base
     try{
-        $db = new PDO($dsn, $username);
+        $db = new PDO($dsn, $username,$password);
     } //If we fail we will display the error page 
     catch(PDOException $usernamee){
         $error_message = "DataBase Errot";
