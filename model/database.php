@@ -1,7 +1,9 @@
 <?php
-    $dsn ="mysql:host=localhost;dbname=zippy";
-    $username = 'root';
-    $password = 'pa55word';
+    $dsn ="mysql:host=xlf3ljx3beaucz9x.cbetxkdyhwsb.us-east-1.rds.amazonaws.com;dbname=wpbv8ju2q3a1ag3f";
+    $username = 'krvp3c061jjc4618';
+    $password = 'v6wfhc56voefhyp8';
+
+    
 
     
     //Try to connect tot he data base
