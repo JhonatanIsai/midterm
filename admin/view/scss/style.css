@@ -7,7 +7,6 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Arial", "Arial narrow", "helvetica";
 }
 
 body {
@@ -64,23 +63,19 @@ body header h1 a {
 }
 
 .returnDisplay {
-  justify-content: center;
+  border: 1px solid green;
   flex-direction: column;
   justify-content: flex-start;
-  color: black;
-  padding-bottom: 3em;
+  width: 100%;
 }
 
 .returnDisplay table {
   width: 90%;
   border-collapse: collapse;
-  background-color: white;
-  max-width: 1000px;
 }
 
 .returnDisplay table tr {
   border: solid 2px black;
-  font-weight: 510;
 }
 
 .returnDisplay table tr td {
@@ -92,6 +87,11 @@ body header h1 a {
 .returnDisplay table th {
   height: 20px;
   background-color: #eed027;
+}
+
+.removeBttn {
+  background-color: #eed027;
+  border-radius: 10px;
 }
 
 .button {

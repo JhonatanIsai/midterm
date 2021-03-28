@@ -37,8 +37,7 @@ $focus_color: rgb(238, 208, 39);
 *{
     padding: 0;
     margin: 0;
-    box-sizing: border-box; 
-    font-family:"Arial", "Arial narrow", "helvetica" ;
+    box-sizing: border-box;
 }
 
 // Stuff that changes 
@@ -81,21 +80,15 @@ body{
     }
 }
 .returnDisplay{
-    @include flexCenter();
+    border: 1px solid green;
     @include flexColumn();
-    
-     
-    color: black;
- 
-    padding-bottom: 3em;
+    width: 100%;
 table{
     width: 90%;
     border-collapse: collapse;
-    background-color: white;
-    max-width: 1000px;
+    
     tr{
         border: solid 2px black;
-        font-weight: 510;
         
         td{
             padding-left: 5px;
@@ -106,12 +99,15 @@ table{
     }
     th{
         height: 20px;
-        background-color: $focus_color;
- 
+        background-color: $focus_color; //Might change 
     }
 }
 }
 
+.removeBttn{
+    background-color: $focus_color;
+    border-radius: 10px;
+}
 
 .button{
     min-width: 45px;

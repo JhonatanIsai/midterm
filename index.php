@@ -18,13 +18,6 @@
     $orderPrice  = filter_input(INPUT_POST, "price", FILTER_SANITIZE_STRING);
     $orderYear = filter_input(INPUT_POST, "year", FILTER_SANITIZE_STRING);
 
-    echo "type: ".$carType."\n";
-    echo "make: ".$carMake."\n";
-    echo "class: ".$carClass."\n";
-    echo "price: ".$orderPrice."\n";
-    echo "year: ".$orderYear."\n";
-
-
 
 ?>
 <section>
