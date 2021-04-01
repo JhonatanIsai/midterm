@@ -1,0 +1,124 @@
+$background_color:rgb(35, 139, 224) ;
+$text_color: white;
+$text_color2: black;
+$focus_color: rgb(238, 208, 39);
+$inputSize:0px; 
+//$focus_color: red;
+
+
+%flex{
+    display: flex;
+    align-items: center;
+}
+@mixin flexColumn {
+    @extend %flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+@mixin flexCenter{
+    @extend %flex;
+    justify-content: center;
+}
+@mixin noDecour{
+    p{
+        padding: 10px;
+        
+        a{
+            text-decoration: none;
+            color:$focus_color;
+            font-size: 20px;
+            &:hover{
+                font-size: 22px;
+                color: $focus_color;
+            }
+        }
+    }
+    
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family:"Arial", "Arial narrow", "helvetica" ;
+}
+
+// Stuff that changes 
+body{
+    background-color: $background_color;
+    color:  $text_color;
+   
+    header{
+        h1{ 
+            padding: 10px;
+          
+            a{
+                text-decoration: none;
+                color: $text_color;
+                color: $focus_color;
+            }
+        }
+    }
+    .headerMenu{
+        @include flexCenter();
+        padding-bottom: 1em;
+        a{
+        color: $text_color;
+        text-decoration: none;
+        font-weight: 400;
+        }
+    }
+}
+
+main{
+    @include flexCenter();
+    @include flexColumn();
+   
+    .container{  
+        background-color: white; 
+        .title{
+            @include flexCenter();
+            color: $text_color2;
+            padding-top: 2em;
+            padding-bottom: 2em;
+    }
+
+
+        width: 60%;
+        max-width: 600px;
+        //padding-top: 4em;
+        padding-bottom: 6em;
+        border-radius: 5px;
+        .logInForm{
+          
+            color:$text_color2 ;
+    
+            div{
+                @include flexColumn();
+                padding-top: 20px;
+            }
+  
+            .textBox{
+                min-width: 200px;
+                min-height: 30px;
+                max-width: 300px;
+                max-height: 50px;
+
+                width: 80%;
+          
+            }
+    
+            .button{
+                background-color: $focus_color;
+                min-width: 45px;
+                min-height: 45px;
+                border: none;
+                font-weight: 400;
+                width: 80%;
+                border: 5px;
+                
+            }   
+    
+        }
+    }
+}

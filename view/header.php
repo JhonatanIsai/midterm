@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +18,10 @@
         <p><a href="./index.php">Home</a></p>
 
         <!--LiNK TO LOG IN-->
-        <p><a href="./logIn/logIn.php">Log In</a></p>
+        <!--<p><a href="./logIn/view/logIn_view.php">Log In</a></p>-->
+
+        <!--LiNK TO LOG IN-->
+        <p><a href="./logIn/register.php">Register</a></p>
 
     </div>
 

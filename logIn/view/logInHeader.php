@@ -1,3 +1,7 @@
+<?php 
+    session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +19,9 @@
     <div class="headerMenu" >
         <!--Link to home directory-->
         <p><a href="../index.php">Home</a></p>
+        <div class="welcome">
+            <p><?php //echo "Welcome";?> </p>
+        </div>
 
     </div>
 

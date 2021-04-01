@@ -6,8 +6,9 @@
     require("./model/database_db.php");
     require("./model/database.php");
     require("./view/charts.php");
-
-    
+    if(strlen($_SESSION['userid'])>3){
+        echo "Wecome ".$_SESSION['userid']; //User Id 
+    }
     $carCategory = "Inventory";
     
 
