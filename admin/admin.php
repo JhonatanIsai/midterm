@@ -52,7 +52,7 @@ elseif($MakeNumber){
     removeMake($MakeNumber);
     
 }
-elseIf($TypeNumber){
+elseif($TypeNumber){
     removeType($TypeNumber);
     
 }

@@ -50,7 +50,8 @@
                     $chosenChart = getAllByYear();
                 }
             }
-            echo displayWithDelete($chosenChart); // Moved yhis !!!
+            
+            echo displayWithDelete($chosenChart); // Fixed it
         } catch (Exception  $e) {
             echo "Critical Error occoured... Please try again alter";
         } finally {

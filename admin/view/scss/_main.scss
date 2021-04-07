@@ -1,6 +1,8 @@
 $background_color:rgb(35, 139, 224) ;
 $text_color: white;
+$text_color2:BLACK;
 $focus_color: rgb(238, 208, 39);
+$tableColor: white;
 //$focus_color: red;
 
 
@@ -37,7 +39,8 @@ $focus_color: rgb(238, 208, 39);
 *{
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; 
+    font-family:"Arial", "Arial narrow", "helvetica" ;
 }
 
 // Stuff that changes 
@@ -48,10 +51,10 @@ body{
         h1{
             padding: 10px;
           
-            a{
-                text-decoration: none;
-                color: $text_color;
-                color: $focus_color;
+            a{  //Page title
+                text-decoration: none; 
+                color: $focus_color; //cHECK
+              
                 
             }
         }
@@ -79,16 +82,24 @@ body{
         background-color:whitesmoke;
     }
 }
+//Section with all The car information... Middle of the page
 .returnDisplay{
-    border: 1px solid green;
+    @include flexCenter();
     @include flexColumn();
-    width: 100%;
+    
+     
+    color: black;
+ 
+    padding-bottom: 3em;
 table{
     width: 90%;
     border-collapse: collapse;
-    
+    background-color:$tableColor;
+    max-width: 1000px;
     tr{
         border: solid 2px black;
+        font-weight: 510;
+        color:$text_color2;
         
         td{
             padding-left: 5px;
@@ -99,7 +110,9 @@ table{
     }
     th{
         height: 20px;
-        background-color: $focus_color; //Might change 
+        background-color: $focus_color;
+        color:$text_color2;
+ 
     }
 }
 }

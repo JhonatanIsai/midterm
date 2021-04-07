@@ -7,6 +7,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Arial", "Arial narrow", "helvetica";
 }
 
 body {
@@ -20,7 +21,6 @@ body header h1 {
 
 body header h1 a {
   text-decoration: none;
-  color: white;
   color: #eed027;
 }
 
@@ -63,19 +63,24 @@ body header h1 a {
 }
 
 .returnDisplay {
-  border: 1px solid green;
+  justify-content: center;
   flex-direction: column;
   justify-content: flex-start;
-  width: 100%;
+  color: black;
+  padding-bottom: 3em;
 }
 
 .returnDisplay table {
   width: 90%;
   border-collapse: collapse;
+  background-color: white;
+  max-width: 1000px;
 }
 
 .returnDisplay table tr {
   border: solid 2px black;
+  font-weight: 510;
+  color: BLACK;
 }
 
 .returnDisplay table tr td {
@@ -87,6 +92,7 @@ body header h1 a {
 .returnDisplay table th {
   height: 20px;
   background-color: #eed027;
+  color: BLACK;
 }
 
 .removeBttn {
