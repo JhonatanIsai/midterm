@@ -10,7 +10,7 @@
 </head>
 <body> <!--Header-->
     <header>
-        <h1> <a href="../index.php"> Zippy's auto</a></h1>
+        <h1> <a href="./index.php"> Zippy's auto</a></h1>
     </header>
     <div class="headerMenu" >
         <!--Link to home directory-->
@@ -21,7 +21,7 @@
         <!--<p><a href="./logIn/view/logIn_view.php">Log In</a></p>-->
 
         <!--LiNK TO LOG IN-->
-        <p><a href="./logIn/register.php">Register</a></p>
+        <p><a href="./register.php">Register</a></p>
 
     </div>
 

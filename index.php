@@ -6,11 +6,8 @@
     require("./model/database_db.php");
     require("./model/database.php");
     require("./view/charts.php");
-    if(strlen($_SESSION['userid'])>3){
-        echo "Wecome ".$_SESSION['userid']; //User Id 
-    }
-    $carCategory = "Inventory";
     
+
 
 
     $carType  = filter_input(INPUT_POST, "dropDownType", FILTER_SANITIZE_NUMBER_INT);
@@ -19,7 +16,17 @@
     $orderPrice  = filter_input(INPUT_POST, "price", FILTER_SANITIZE_STRING);
     $orderYear = filter_input(INPUT_POST, "year", FILTER_SANITIZE_STRING);
 
-
+    $carCategory = "Inventory";
+    
+    //Saying hello to user
+    if(strlen($_SESSION['userid'])>3){
+        echo "Wecome ".$_SESSION['userid']; //User Id 
+    }
+    else{
+        echo "";
+    }
+    
+        
 ?>
 <section>
     <!--Choose category -->

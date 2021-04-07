@@ -2,7 +2,7 @@
 
 
 <!-- Log In area... Make sure to separate-->
-<main>
+<main class="mainRegister">
     
     
     <div class="container"> 
@@ -20,7 +20,7 @@
 
             <div>
                 <input class="button" type="submit" value="Register">
-                <p><a href="./logIn_view.php">Log-In</a></p>
+                <p><a href="../register.php">Log-In</a></p>
             </div>
 
         </form>

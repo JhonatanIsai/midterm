@@ -1,4 +1,4 @@
-.headerMenu, .dropDownSection, .returnDisplay, .footerForm {
+.headerMenu, .dropDownSection, .returnDisplay, .mainRegister, .mainRegister .container .title, .mainRegister .container .logInForm div {
   display: flex;
   align-items: center;
 }
@@ -104,23 +104,63 @@ body header h1 a {
   padding-left: 20px;
 }
 
-.footerForm {
+footer {
+  background-color: blueviolet;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+footer p {
+  color: black;
+}
+
+.mainRegister {
+  justify-content: center;
   flex-direction: column;
   justify-content: flex-start;
-  padding-top: 1em;
-  padding-bottom: 1em;
 }
 
-.footerForm .button {
-  padding: 10px 10px 10px 10px;
-  min-width: 45px;
+.mainRegister .container {
+  background-color: white;
+  width: 60%;
+  max-width: 600px;
+  padding-bottom: 6em;
+  border-radius: 5px;
+}
+
+.mainRegister .container .title {
+  justify-content: center;
+  color: black;
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+.mainRegister .container .logInForm {
+  color: black;
+}
+
+.mainRegister .container .logInForm div {
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 20px;
+}
+
+.mainRegister .container .logInForm .textBox {
+  min-width: 200px;
+  min-height: 30px;
+  max-width: 300px;
+  max-height: 50px;
+  width: 80%;
+}
+
+.mainRegister .container .logInForm .button {
   background-color: #eed027;
+  min-width: 45px;
   min-height: 45px;
-}
-
-.footerForm .button div {
-  padding-top: 10px;
-  padding-right: 10px;
-  padding-left: 10px;
+  border: none;
+  font-weight: 400;
+  width: 80%;
+  border: 5px;
 }
 /*# sourceMappingURL=style.css.map */

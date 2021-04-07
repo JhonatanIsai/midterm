@@ -1,20 +1,7 @@
-
-.footerForm{
-    @include flexColumn();
- 
-    padding-top: 1em;
-    padding-bottom: 1em;
-    .button{
-        padding:10px 10px 10px 10px;
-        min-width: 45px;
-        background-color: $focus_color;
-        min-height: 45px;
-        
-    div{
-        padding-top: 10px;
-        padding-right: 10px;
-        padding-left: 10px;
-    }
-
-}
+footer{
+    background-color: blueviolet;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    p{color: black;}
 }
