@@ -7,12 +7,7 @@
     <?php 
         $chosenChart = getAllMakes();
         echo displayMakes($chosenChart);
-    
     ?>
-
-
-
-
         <!--New car prize-->
         <h2>Add Vehicle Make</h2>
         <label for="newMake"> New Make:</label>

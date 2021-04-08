@@ -1,10 +1,5 @@
 <?php 
-        
-        //require("./model/type_db.php");
-        //require("./model/makes_db.php");
-        //require("./model/classes_db.php"); // here if 
-        global $newCarPrice;
-
+    global $newCarPrice;
 ?>
 
 <section>

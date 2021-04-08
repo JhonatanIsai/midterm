@@ -7,10 +7,6 @@
         $chosenChart = getAllType();
         echo displayType($chosenChart);
     ?>
-
-
-
-
         <!--New car prize-->
         <h2>Add Vehicle Type</h2>
         <label for="newType"> New Type:</label>

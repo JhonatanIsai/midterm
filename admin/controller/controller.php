@@ -20,7 +20,7 @@
             } elseif (!empty($carMake) && (!empty($carClass) || !empty($carType))) {
                 echo "<h2> Choose Only one option from dropdown menu. </h2>"; //Center
             } else {
-                if (!empty($carType)) {
+                if (!empty($carType)) { //If car Type received input
                     if (!empty($orderPrice) && !$orderYear) {
                         $chosenChart = getTypeByPrice($carType);
                     } elseif (!empty($orderYear) && !$orderPrice) {
@@ -28,7 +28,7 @@
                     } else {
                         $chosenChart = getAllByType($carType);
                     }
-                } elseif (!empty($carClass)) {
+                } elseif (!empty($carClass)) { //If car class received input
                     if (!empty($orderPrice) && !$orderYear) {
                         $chosenChart = getClassByPrice($carClass);
                     } elseif (!empty($orderYear) && !$orderPrice) {
@@ -36,7 +36,7 @@
                     } else {
                         $chosenChart = getAllByClass($carClass);
                     }
-                } elseif (!empty($carMake)) {
+                } elseif (!empty($carMake)) { //If car make had input
                     if (!empty($orderPrice) && !$orderYear) {
                         $chosenChart = getMakeByPrice($carMake);
                     } elseif (!empty($orderYear) && !$orderPrice) {
@@ -179,5 +179,14 @@ function checkIfExistClass($newItem, $array)
  if($Exist == False){
     addClass($newItem);
  }
+}
+
+function callRegister(){
+    try{
+        require("./view/register_view.php");
+    }
+    catch(Exception $e){
+        header("location: ./admin.php");
+    }
 }
 ?>
