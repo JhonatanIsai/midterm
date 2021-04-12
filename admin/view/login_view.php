@@ -24,7 +24,7 @@
 
             <div>
             <!--Submit for button -->
-                <input class="button" type="submit" value="Register">
+                <input class="button" type="submit" value="Log In">
                 <p><a href="../register_view.php">Log-In</a></p>
             </div>
 

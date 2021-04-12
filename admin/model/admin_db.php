@@ -18,11 +18,27 @@
         $statement -> bindValue(":userName", $userName);
         $statement -> execute();
 
-        $row =$statement ->fetch();
-        ///
+        $row = $statement -> fetch();
         $statement -> closeCursor();
-        $hash = $row['password'];
-        return password_verify($password,$hash);
+        
+        if(!empty($password) && !empty($userName)){
+            $hash = $row["password"];
+            return password_verify($password,$hash);
+        }
+        elseif(strlen($userName<8)){
+        //Error
+        $php_errormsg = "User name or password are incorrect.";
+        return false;
+        }
+        else{
+            return false;
+        }
+        
+
+        ///
+        
+        //echo $hash;
+        
     }
 
 ?>

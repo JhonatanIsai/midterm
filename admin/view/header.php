@@ -1,3 +1,5 @@
+<?php $_SESSION['is_valid_admin'] = FALSE ;?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,15 +15,15 @@
         <h1> <a href=".././index.php"> Zippy's auto</a></h1>
     </header>
     <div class="headerMenu" >
-        <!--Link to home directory-->
+        <form id = "authentication_act" name="authentication_act" class="conteiner" action="<?php echo $_SERVER["PHP_SELF"]?>" method="GET">
+        
+        <button class="action_authen" type="submit" name="action" value="login">Login</button>
+        <button class="action_authen" type="submit" name="action" value="register">Register</button>
 
-        <p><a href="./index.php">Home</a></p>
-
-        <!--LiNK TO LOG IN-->
-        <!--<p><a href="./logIn/view/logIn_view.php">Log In</a></p>-->
-
-        <!--LiNK TO LOG IN-->
-        <p><a href="../admin/controller/admin_register.php">Register</a></p>
+        <button class="action_authen" type="submit" name="action" value="logout">Logout</button>
+        <button class="action_authen" type="submit" name="action" value="show_admin_menu">Admin menu</button>
+        
+        </form>
     </div>
 
 

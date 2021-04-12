@@ -1,57 +1,78 @@
 <?php
-    try{
-    // Start the seeion and load up connection to database and the functions for it 
-        session_start();
-        require_once("../model/database.php");
-        require_once("../model/admin_db.php");
-        //Load the view
-        require("../view/register_view.php");
-        
-        $action = filter_input(INPUT_POST, 'action'); // What is the action LOg in or register?? 
-        if($action == NULL){
-            $action = filter_input(INPUT_GET, "action");
-            if($action == NULL){
-                $action = "show admin Menu";
-            }
-        }
+/** Controller for the log in system 
+ * takes input from form and buttons and redirects user
+ * to the correct page.  
+ */
 
-        //Request log in from user
-        if(!isset($_SESSION["is_valid_admin"])){
-            $action = "login";
-        }
+// Start the seeion and load up connection to database and the functions for it 
+session_start();
 
-        // Perform chosen action
-        switch($action){
-            case "login":
-                $username = filter_input(INPUT_POST, "userName");   //Check this for camel Case... May be a problem
-                $password = filter_input(INPUT_POST, "password");
+//Load logic
+require_once("../model/database.php");
+require_once("../model/admin_db.php");
 
-                if(is_valid_admin_login($username,$password)){
-                    $_SESSION['is_valid_admin'] =true;
-                    include("../admin.php/"); //Using admin.php instead of admin menu. may7 need to change it but i must check 
-                }else{
-                    $login_message = "You're Not logged in.... Please login to view thispage";
-                    include("../view/login_view.php");
-                }
-                break;
-            case 'show_admin_menu':
-                include("../admin.php"); //using admin.php here too
-                break;
-            case "show_product_manager":
-                //Include Productmanager
-                break;
-            case "logout":
-                $_SESSION = array(); //Make seesion data an empty array
-                session_destroy();
-                $login_message = "See you later.. You're logged out by the way";
+//Load the view
+require_once("../view/header.php");
+
+//Variables from forms 
+$action = filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING);
+
+
+
+//Check action variable, if the variable is epty action will be log in
+if ($action == NULL) {
+    $action = filter_input(INPUT_GET, "action");
+    if ($action == NULL) {
+        $action = 'login';
+    }
+}
+
+//Request log in from user
+//If the valid admin Log in is empty
+//it means you have not logged in will be redirected to the log in page
+if (!isset($_SESSION["is_valid_admin"])) {
+    $action = "login";
+}
+
+// Perform chosen action
+/*If one of the menu buttons in the header is clicked the its actions 
+will be performed by the switch */
+
+switch ($action) {
+    /** If action is log in, user will be redirected to the admin page */
+    case "login":
+
+        $username = filter_input(INPUT_GET, "userName_login");   //Check this for camel Case... May be a problem
+        $password = filter_input(INPUT_GET, "password_Login");
+
+     
+            if (is_valid_admin_login($username, $password)) {
+                $_SESSION['is_valid_admin'] = true;
+                header("location: ../admin.php");
+                //include("../admin.php/"); //Using admin.php instead of admin menu. may7 need to change it but i must check 
+            } else {
+                $login_message = "You're Not logged in.... Please login to view thispage";
                 include("../view/login_view.php");
-                break;
-        }
+            }
+      
 
+        break;
 
-    }
-    catch(Exception $e){
-        //include("../../index.php"); //may need to change tha paths
-        // Change this to header("location: ../../index.php");
-    }
+    case 'show_admin_menu':
+        header("location: ../admin.php");
+
+        break;
+        
+
+    case "register":
+        include("../view/register_view.php"); //Add a new adminitrator
+        break;
+
+    case "logout":
+        $_SESSION = array(); //Make seesion data an empty array
+        session_destroy();
+        $login_message = "See you later.. You're logged out by the way";
+        include("../view/login_view.php");
+        break;
+}
 ?>
