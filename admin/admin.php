@@ -47,21 +47,24 @@ $action = filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING);
 
 switch($action){
     case "login":
-        header("location: ./controller/admin_register.php");
-        $_SESSION["is_valid_admin"] = false;
+        header("location: ./controller/admin_register.php?action=login");
+    
 
         break;
     case "register":
-        header("location: ./controller/admin_register.php");
+        header("location: ./controller/admin_register.php?action=register");
+        break;
+    case "logout":
+        header("location: ./controller/admin_register.php?action=logout");
+        break;
+    case "logout":
+        header("location: ./controller/admin_register.php?action=show_admin_menu");
         break;
 }
 
 
 if($_SESSION["is_valid_admin"] == false){
-    echo "\n Is valid admin: not good to go ";
-    header("location: ./controller/admin_register.php");
-}else{
-    echo "\n Is valid admin: good to go ";
+    header("location: ./controller/admin_register.php?action=login");
 }
 
     if ($classNumber) {
