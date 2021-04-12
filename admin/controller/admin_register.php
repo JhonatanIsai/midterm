@@ -1,11 +1,11 @@
 <?php
+
 /** Controller for the log in system 
  * takes input from form and buttons and redirects user
  * to the correct page.  
  */
 
 // Start the seeion and load up connection to database and the functions for it 
-session_start();
 
 //Load logic
 require_once("../model/database.php");
@@ -15,6 +15,11 @@ require_once("../model/admin_db.php");
 require_once("../view/header.php");
 
 //Variables from forms 
+
+
+
+
+
 $action = filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING);
 
 
@@ -30,7 +35,7 @@ if ($action == NULL) {
 //Request log in from user
 //If the valid admin Log in is empty
 //it means you have not logged in will be redirected to the log in page
-if (!isset($_SESSION["is_valid_admin"])) {
+if (!isset($_SESSION["is_valid_admin"]) || $_SESSION["is_valid_admin"] == null) {
     $action = "login";
 }
 
@@ -39,33 +44,44 @@ if (!isset($_SESSION["is_valid_admin"])) {
 will be performed by the switch */
 
 switch ($action) {
-    /** If action is log in, user will be redirected to the admin page */
+        /** If action is log in, user will be redirected to the admin page */
     case "login":
 
         $username = filter_input(INPUT_GET, "userName_login");   //Check this for camel Case... May be a problem
         $password = filter_input(INPUT_GET, "password_Login");
 
-     
-            if (is_valid_admin_login($username, $password)) {
-                $_SESSION['is_valid_admin'] = true;
-                header("location: ../admin.php");
-                //include("../admin.php/"); //Using admin.php instead of admin menu. may7 need to change it but i must check 
-            } else {
-                $login_message = "You're Not logged in.... Please login to view thispage";
-                include("../view/login_view.php");
-            }
-      
+
+        if (is_valid_admin_login($username, $password)) {
+            $_SESSION['is_valid_admin'] = true;
+            header("location: ../admin.php");
+            //include("../admin.php/"); //Using admin.php instead of admin menu. may7 need to change it but i must check 
+        } else {
+            $login_message = "You're Not logged in.... Please login to view thispage";
+            include("../view/login_view.php");
+        }
+
 
         break;
 
     case 'show_admin_menu':
-        header("location: ../admin.php");
-
+        if ($_SESSION['is_valid_admin'] == true) {
+            header("location: ../admin.php");
+        } else {
+            include("../view/login_view.php");
+        }
         break;
-        
+
 
     case "register":
-        include("../view/register_view.php"); //Add a new adminitrator
+
+        if ($_SESSION['is_valid_admin'] == true) {
+            include("../view/register_view.php"); //Add a new adminitrator
+        } else {
+            header("location: ../../register.php");
+
+        }
+        break;
+
         break;
 
     case "logout":
@@ -75,4 +91,3 @@ switch ($action) {
         include("../view/login_view.php");
         break;
 }
-?>

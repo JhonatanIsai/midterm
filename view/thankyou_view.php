@@ -2,7 +2,7 @@
 <h2>Thank you for signing up,<? echo $_SESSION['userid'];?></h2> <!--Fix this
 The Name is not showing up-->
     <br>
-    <p><?php $error_message?></p>
+    
     <br>
 
 

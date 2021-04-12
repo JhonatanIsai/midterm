@@ -1,4 +1,5 @@
 <?php
+
 // ................................Main..................................
 require("./controller/controller.php");
 require("./model/makes_db.php"); //Thisa works for all So far 
@@ -10,9 +11,10 @@ require("../model/database.php");
 require("../view/charts.php");
 require("./model/vehicle_db.php");
 
-
+require_once("./model/admin_db.php");
 
 $carCategory = "Inventory";
+
 
 
 $carType  = filter_input(INPUT_POST, "dropDownType", FILTER_SANITIZE_NUMBER_INT);
@@ -41,7 +43,26 @@ $MakeNumber = filter_input(INPUT_POST, "removeMake", FILTER_SANITIZE_NUMBER_INT)
 $TypeNumber = filter_input(INPUT_POST, "removeType", FILTER_SANITIZE_NUMBER_INT);
 
 
+$action = filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING);
 
+switch($action){
+    case "login":
+        header("location: ./controller/admin_register.php");
+        $_SESSION["is_valid_admin"] = false;
+
+        break;
+    case "register":
+        header("location: ./controller/admin_register.php");
+        break;
+}
+
+
+if($_SESSION["is_valid_admin"] == false){
+    echo "\n Is valid admin: not good to go ";
+    header("location: ./controller/admin_register.php");
+}else{
+    echo "\n Is valid admin: good to go ";
+}
 
     if ($classNumber) {
         removeClass($classNumber);
@@ -79,3 +100,9 @@ $TypeNumber = filter_input(INPUT_POST, "removeType", FILTER_SANITIZE_NUMBER_INT)
     } else {
         return defaultView($carType, $carClass, $carMake, $orderPrice, $orderYear);
     }
+
+  
+    
+
+
+?>

@@ -1,4 +1,5 @@
 <?php
+/** Functions to add users and validates user credentials  */
     function add_admin($userName, $password){
         global $db;
         $hash = password_hash($password, PASSWORD_BCRYPT);
@@ -20,25 +21,20 @@
 
         $row = $statement -> fetch();
         $statement -> closeCursor();
-        
+        //.......................................................
         if(!empty($password) && !empty($userName)){
             $hash = $row["password"];
             return password_verify($password,$hash);
         }
         elseif(strlen($userName<8)){
-        //Error
-        $php_errormsg = "User name or password are incorrect.";
-        return false;
+            //Error
+            $php_errormsg = "User name or password are incorrect.";
+            return false;
         }
         else{
             return false;
         }
-        
-
-        ///
-        
-        //echo $hash;
-        
+        //.......................................................
     }
 
 ?>

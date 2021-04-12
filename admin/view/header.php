@@ -1,4 +1,7 @@
-<?php $_SESSION['is_valid_admin'] = FALSE ;?>
+<?php
+session_start(); 
+
+//$_SESSION['is_valid_admin'];?>
 
 <!DOCTYPE html>
 <html lang="en">
