@@ -9,7 +9,7 @@
     </div>
 
     <div class= "logInForm">
-        <form id = "userRegister" name="userRegister" class="conteiner" action="<?php echo $_SERVER["PHP_SELF"]?>" method="GET"> <!--May change to post-->
+        <form id = "userRegister" name="userRegister" class="conteiner" action="<?php echo $_SERVER["PHP_SELF"]?>" method="POST"> <!--May change to post-->
             <!--User Name-->
             <div>
                 <label for = "userName_Register" >User Name:</label>
@@ -20,6 +20,11 @@
             <div>
                 <label for = "password_Register" >Password:</label>
                 <input class="textBox" type="text" id="password_Register" name="password_Register" placeholder="Password" >
+            </div>
+            <!--Confirm Password-->
+            <div>
+                <label for = "password_Register" > Confirm Password:</label>
+                <input class="textBox" type="text" id="password_Register" name="password_Register_Confirm" placeholder="Re-enter Password" >
             </div>
 
             <div>

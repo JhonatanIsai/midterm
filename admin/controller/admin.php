@@ -22,6 +22,20 @@ require_once("../view/header.php");
 
 $action = filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING);
 
+$username = filter_input(INPUT_POST, "userName_Register");   //Check this for camel Case... May be a problem
+$password = filter_input(INPUT_POST, "password_Register");
+$confirm_password = filter_input(INPUT_POST, "password_Register_Confirm");
+
+if(!empty($username) && !empty($password) && !empty($confirm_password)) {
+    require_once("../util/valid_register.php");
+    if(valid_username($username) && valid_password($password) && passwords_match($password,$confirm_password)){
+        add_admin($username, $password);
+    }
+    else{// Fix this 
+        echo valid_registration($username, $password, $confirm_password);
+    }
+}
+
 
 
 //Check action variable, if the variable is epty action will be log in
@@ -53,8 +67,8 @@ switch ($action) {
 
         if (is_valid_admin_login($username, $password)) {
             $_SESSION['is_valid_admin'] = true;
-            header("location: ../admin.php");
-            //include("../admin.php/"); //Using admin.php instead of admin menu. may7 need to change it but i must check 
+            header("location: ../index.php");
+            //include("../index.php/"); //Using admin.php instead of admin menu. may7 need to change it but i must check 
         } else {
             $login_message = "You're Not logged in.... Please login to view thispage";
             include("../view/login_view.php");
@@ -65,7 +79,7 @@ switch ($action) {
 
     case 'show_admin_menu':
         if ($_SESSION['is_valid_admin'] == true) {
-            header("location: ../admin.php");
+            header("location: ../index.php");
         } else {
             include("../view/login_view.php");
         }
@@ -76,11 +90,12 @@ switch ($action) {
 
         if ($_SESSION['is_valid_admin'] == true) {
             include("../view/register_view.php"); //Add a new adminitrator
-        } else {
-            header("location: ../../register.php");
 
+            } 
+        else {
+            header("location: ../../register.php");
         }
-        break;
+  
 
         break;
 

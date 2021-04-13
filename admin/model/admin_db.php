@@ -37,4 +37,24 @@
         //.......................................................
     }
 
+    function username_exists($userName){
+        global $db;
+        $query = 'SELECT COUNT(*) from administrators WHERE userName = :userName';
+        $statement = $db ->prepare($query);
+        $statement -> bindValue(":userName", $userName);
+        $statement -> execute();
+        $count  = $statement -> fetch();
+        $statement -> closeCursor();
+
+        if($count[0]>0){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    
+
+    }
+
 ?>

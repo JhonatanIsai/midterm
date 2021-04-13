@@ -1,7 +1,6 @@
 <?php
 session_start(); 
-
-//$_SESSION['is_valid_admin'];?>
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,10 +20,10 @@ session_start();
         <form id = "authentication_act" name="authentication_act" class="conteiner" action="<?php echo $_SERVER["PHP_SELF"]?>" method="GET">
         
         <button class="action_authen" type="submit" name="action" value="login">Login</button>
-        <button class="action_authen" type="submit" name="action" value="register">Register</button>
+        <button class="action_authen" type="submit" name="action" value="register">Register New Admin User</button>
 
         <button class="action_authen" type="submit" name="action" value="logout">Logout</button>
-        <button class="action_authen" type="submit" name="action" value="show_admin_menu">Admin menu</button>
+        <button class="action_authen" type="submit" name="action" value="show_admin_menu">Admin Menu</button>
         
         </form>
     </div>

@@ -16,13 +16,16 @@ require_once("./model/admin_db.php");
 $carCategory = "Inventory";
 
 
-
+//...................................For Drop Down Menu...............................
 $carType  = filter_input(INPUT_POST, "dropDownType", FILTER_SANITIZE_NUMBER_INT);
 $carMake  = filter_input(INPUT_POST, "dropDownMake", FILTER_SANITIZE_NUMBER_INT);
 $carClass = filter_input(INPUT_POST, "dropDownClass", FILTER_SANITIZE_NUMBER_INT);
 $orderPrice  = filter_input(INPUT_POST, "price", FILTER_SANITIZE_STRING);
 $orderYear = filter_input(INPUT_POST, "year", FILTER_SANITIZE_STRING);
-$editChoice = filter_input(INPUT_POST, "admin_edit", FILTER_SANITIZE_STRING);
+
+//...................................For Form in footer...............................
+$editChoice = filter_input(INPUT_GET, "admin_edit", FILTER_SANITIZE_STRING);
+
 //...................................Input for adding new car information...............................
 $newCarMake = filter_input(INPUT_POST, "newCarMake",  FILTER_SANITIZE_NUMBER_INT);
 $newCarType = filter_input(INPUT_POST, "newCarType", FILTER_SANITIZE_NUMBER_INT);
@@ -42,29 +45,30 @@ $classNumber = filter_input(INPUT_POST, "removeClass", FILTER_SANITIZE_NUMBER_IN
 $MakeNumber = filter_input(INPUT_POST, "removeMake", FILTER_SANITIZE_NUMBER_INT);
 $TypeNumber = filter_input(INPUT_POST, "removeType", FILTER_SANITIZE_NUMBER_INT);
 
-
+//............................. Verification Information ...........................................................
 $action = filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING);
+$userName= filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING);
+$password = filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING);
+$confirm_password = filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING);
 
 switch($action){
     case "login":
-        header("location: ./controller/admin_register.php?action=login");
-    
-
+        header("location: ./controller/admin.php?action=login");
         break;
     case "register":
-        header("location: ./controller/admin_register.php?action=register");
+        header("location: ./controller/admin.php?action=register");
         break;
     case "logout":
-        header("location: ./controller/admin_register.php?action=logout");
+        header("location: ./controller/admin.php?action=logout");
         break;
     case "logout":
-        header("location: ./controller/admin_register.php?action=show_admin_menu");
+        header("location: ./controller/admin.php?action=show_admin_menu");
         break;
 }
 
 
 if($_SESSION["is_valid_admin"] == false){
-    header("location: ./controller/admin_register.php?action=login");
+    header("location: ./controller/admin.php?action=login");
 }
 
     if ($classNumber) {
