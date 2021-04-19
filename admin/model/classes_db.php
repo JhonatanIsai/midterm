@@ -102,6 +102,40 @@ public static function getClassByYear($class)
     return $all;
 }
 
+public static function displayClassesDel($chart){
+    $output ="";
+    $output.= "<form action='".$_SERVER['PHP_SELF']."' method='POST'>";
+
+    $output .= "<div class='returnDisplay'>";
+    $output .= "<h2>Invetory</h2>";
+    $output .= "<table class='resultTable'>";
+    $output .= "<tr>";
+    $output .=    "<th>Class</th>";
+    $output .=    "<th><tb></th>";
+    $output .=      "</tr>";
+    foreach ($chart as $car){
+        //MakeFunction from this
+        $output .= "<div class='eachCar'>";
+        $output .= "<tr>";
+
+        $output .= "<td>".$car['class']."</td>";
+
+        $output.= "<td>";
+    
+        $output.="<button type='submit' class='removeBttn' name='removeClass' value ='".$car[0]."'> Remove Class</button>";
+        
+        $output.="</td>";
+
+        $output .="</tr>";
+        $output .="</div>";
+
+        $output.= "</form>";
+    }
+
+    $output .="</table>";
+    $output .="</div>";
+    return $output;
+}
 
 }
 
@@ -215,37 +249,37 @@ public static function getClassByYear($class)
 //     return $all;
 // }
 
-function displayClassesDel($chart){
-    $output ="";
-    $output.= "<form action='".$_SERVER['PHP_SELF']."' method='POST'>";
+// function displayClassesDel($chart){
+//     $output ="";
+//     $output.= "<form action='".$_SERVER['PHP_SELF']."' method='POST'>";
 
-    $output .= "<div class='returnDisplay'>";
-    $output .= "<h2>Invetory</h2>";
-    $output .= "<table class='resultTable'>";
-    $output .= "<tr>";
-    $output .=    "<th>Class</th>";
-    $output .=    "<th><tb></th>";
-    $output .=      "</tr>";
-    foreach ($chart as $car){
-        //MakeFunction from this
-        $output .= "<div class='eachCar'>";
-        $output .= "<tr>";
+//     $output .= "<div class='returnDisplay'>";
+//     $output .= "<h2>Invetory</h2>";
+//     $output .= "<table class='resultTable'>";
+//     $output .= "<tr>";
+//     $output .=    "<th>Class</th>";
+//     $output .=    "<th><tb></th>";
+//     $output .=      "</tr>";
+//     foreach ($chart as $car){
+//         //MakeFunction from this
+//         $output .= "<div class='eachCar'>";
+//         $output .= "<tr>";
 
-        $output .= "<td>".$car['class']."</td>";
+//         $output .= "<td>".$car['class']."</td>";
 
-        $output.= "<td>";
+//         $output.= "<td>";
     
-        $output.="<button type='submit' class='removeBttn' name='removeClass' value ='".$car[0]."'> Remove Class</button>";
+//         $output.="<button type='submit' class='removeBttn' name='removeClass' value ='".$car[0]."'> Remove Class</button>";
         
-        $output.="</td>";
+//         $output.="</td>";
 
-        $output .="</tr>";
-        $output .="</div>";
+//         $output .="</tr>";
+//         $output .="</div>";
 
-        $output.= "</form>";
-    }
+//         $output.= "</form>";
+//     }
 
-    $output .="</table>";
-    $output .="</div>";
-    return $output;
-}
+//     $output .="</table>";
+//     $output .="</div>";
+//     return $output;
+// }
