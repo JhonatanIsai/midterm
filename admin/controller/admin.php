@@ -19,7 +19,8 @@ require_once("../view/header.php");
 
 
 
-$validation = new validation();
+
+
 $action = filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING);
 
 $username = filter_input(INPUT_POST, "userName_Register");   //Check this for camel Case... May be a problem
@@ -29,7 +30,7 @@ $confirm_password = filter_input(INPUT_POST, "password_Register_Confirm");
 if(!empty($username) && !empty($password) && !empty($confirm_password)) {
     require_once("../util/valid_register.php");
     if(valid_username($username) && valid_password($password) && passwords_match($password,$confirm_password)){
-        $validation -> add_admin($username, $password);
+        validation::add_admin($username, $password);
     }
     else{// Fix this 
         echo valid_registration($username, $password, $confirm_password)[0];
@@ -65,7 +66,7 @@ switch ($action) {
         $password = filter_input(INPUT_GET, "password_Login");
 
 
-        if (is_valid_admin_login($username, $password)) {
+        if (validation::is_valid_admin_login($username, $password)) {
             $_SESSION['is_valid_admin'] = true;
             header("location: ../index.php");
             //include("../index.php/"); //Using admin.php instead of admin menu. may7 need to change it but i must check 

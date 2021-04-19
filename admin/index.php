@@ -72,7 +72,7 @@ if($_SESSION["is_valid_admin"] == false){
 }
 
     if ($classNumber) {
-        removeClass($classNumber);
+        ClassDB::removeClass($classNumber);
     } elseif ($MakeNumber) {
         removeMake($MakeNumber);
     } elseif ($TypeNumber) {
@@ -89,7 +89,7 @@ if($_SESSION["is_valid_admin"] == false){
     } elseif (!empty($newType)) {
         checkIfExistType($newType, getAllType());
     } elseif (!empty($newClass)) {
-        checkIfExistClass($newClass, getAllClasses());
+        checkIfExistClass($newClass, ClassDB::getAllClasses());
     }
 
 

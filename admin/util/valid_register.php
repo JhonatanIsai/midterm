@@ -23,7 +23,7 @@
         if (!valid_username($username)) {
             array_push($errors, "Username must be six characters or longer.");
         }
-        if (username_exists($username)) {
+        if (validation::username_exists($username)) {
             array_push($errors, "The username you entered is already taken.");
         }
 

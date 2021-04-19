@@ -6,7 +6,7 @@
    
             require(".././admin/model/database_db.php");
             // For drop Down Menu//
-            require("../view/dropdown_menu.php");
+            require(".././admin/view/dropdown_menu.php"); ///*Changed this  */
         } catch (Exception  $e) {
             echo "Error loading required files...... Please try again.";
         }
@@ -30,11 +30,11 @@
                     }
                 } elseif (!empty($carClass)) { //If car class received input
                     if (!empty($orderPrice) && !$orderYear) {
-                        $chosenChart = getClassByPrice($carClass);
+                        $chosenChart = ClassDB::getClassByPrice($carClass);
                     } elseif (!empty($orderYear) && !$orderPrice) {
-                        $chosenChart = getClassByYear($carClass);
+                        $chosenChart = ClassDB::getClassByYear($carClass);
                     } else {
-                        $chosenChart = getAllByClass($carClass);
+                        $chosenChart = ClassDB::getAllByClass($carClass);
                     }
                 } elseif (!empty($carMake)) { //If car make had input
                     if (!empty($orderPrice) && !$orderYear) {
@@ -177,7 +177,7 @@ function checkIfExistClass($newItem, $array)
  }
  echo $Exist;
  if($Exist == False){
-    addClass($newItem);
+    ClassDB::addClass($newItem);
  }
 }
 

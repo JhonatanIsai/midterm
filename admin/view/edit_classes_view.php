@@ -3,7 +3,7 @@
     <h2>Add Vehicle Class</h2>
     <form class="dropDownSection" action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST">
     <?php 
-        $chosenChart = getAllClasses();
+        $chosenChart = ClassDB::getAllClasses();
         echo displayClassesDel($chosenChart);
     ?>
         <!--New car prize-->
