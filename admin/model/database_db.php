@@ -1,7 +1,7 @@
 <?php
     //Get all the cars ordered by year
     class GetByYearOrPrice{
-        public static     function getAllByYear(){
+        public static  function getAllByYear(){
             $db = Database::getDB();
             $query = "SELECT year, model, price, type ,class, make 
             FROM vehicles AS v 

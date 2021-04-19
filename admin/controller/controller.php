@@ -12,7 +12,8 @@
         }
         try {
 
-            $chosenChart = getAllByYear();
+            $chosenChart = getByYearOrPrice::getAllByYear();
+
             if (!empty($carType) && (!empty($carClass) || !empty($carMake))) {
                 echo "<h2> Choose Only one option from dropdown menu. </h2>"; //Center
             } elseif (!empty($carClass) && (!empty($carType) || !empty($carMake))) {
@@ -22,11 +23,11 @@
             } else {
                 if (!empty($carType)) { //If car Type received input
                     if (!empty($orderPrice) && !$orderYear) {
-                        $chosenChart = getTypeByPrice($carType);
+                        $chosenChart = TypeDB::getTypeByPrice($carType);
                     } elseif (!empty($orderYear) && !$orderPrice) {
-                        $chosenChart = getTypeByYear($carType);
+                        $chosenChart = TypeDB::getTypeByYear($carType);
                     } else {
-                        $chosenChart = getAllByType($carType);
+                        $chosenChart = TypeDB::TygetAllByType($carType);
                     }
                 } elseif (!empty($carClass)) { //If car class received input
                     if (!empty($orderPrice) && !$orderYear) {
@@ -38,20 +39,21 @@
                     }
                 } elseif (!empty($carMake)) { //If car make had input
                     if (!empty($orderPrice) && !$orderYear) {
-                        $chosenChart = getMakeByPrice($carMake);
+                        $chosenChart = MakesDB::getMakeByPrice($carMake);
                     } elseif (!empty($orderYear) && !$orderPrice) {
-                        $chosenChart = getMakeByYear($carMake);
+                        $chosenChart = MakesDB::MakgetMakeByYear($carMake);
                     } else {
-                        $chosenChart = getAllByMake($carMake);
+                        $chosenChart = MakesDB::getAllByMake($carMake);
                     }
                 } elseif (!empty($orderPrice) && !$orderYear) {
-                    $chosenChart = getAllByPrice();
-                } elseif (!empty($orderYear) && !$orderPrice) {
-                    $chosenChart = getAllByYear();
+                    ////////////
+                    $chosenChart = GetByYearOrPrice::getAllByPrice();
+                } elseif(!empty($orderYear) && !$orderPrice) {
+                    $chosenChart = GetByYearOrPrice::getAllByYear();
                 }
             }
             
-            echo displayWithDelete($chosenChart); // Fixed it
+            echo VehicleDB::displayWithDelete($chosenChart); // Fixed it
         } catch (Exception  $e) {
             echo "Critical Error occoured... Please try again alter";
         } finally {
@@ -72,7 +74,7 @@ function addVehicleView($newCarYear, $newCarMake, $newCarModel, $newCarClass, $n
     if (!$newCarYear && !$newCarMake && !$newCarModel && !$newCarClass && !$newCarType && !$newCarPrice) {
         require("./view/add_vehicle_view.php");
     } else {
-        insertNewCar($newCarYear, $newCarMake, $newCarModel, $newCarClass, $newCarType, $newCarPrice);
+        VehicleDB::insertNewCar($newCarYear, $newCarMake, $newCarModel, $newCarClass, $newCarType, $newCarPrice);
     }
     require("./view/admin_footer.php");
 } ?>
@@ -135,7 +137,7 @@ function checkIfExistMake($newMake, $array)
  }
  echo $Exist;
  if($Exist == False){
-    addMake($newMake);
+    MakeDB::addMake($newMake);
  }
 }
 
@@ -156,7 +158,7 @@ function checkIfExistType($newItem, $array)
  }
  echo $Exist;
  if($Exist == False){
-    addType($newItem);
+    TypeDB::addType($newItem);
  }
 }
 

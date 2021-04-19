@@ -74,20 +74,20 @@ if($_SESSION["is_valid_admin"] == false){
     if ($classNumber) {
         ClassDB::removeClass($classNumber);
     } elseif ($MakeNumber) {
-        removeMake($MakeNumber);
+        MakesDB::removeMake($MakeNumber);
     } elseif ($TypeNumber) {
-        removeType($TypeNumber);
+        Type::removeType($TypeNumber);
     }
 
 
     //Make sure i call like this otherwise it wont work 
     //Ask professor dave how to make this better
     if ($newCarYear && $newCarMake && $newCarModel && $newCarClass && $newCarType && $newCarPrice) {
-        insertNewCar($newCarYear, $newCarMake, $newCarModel, $newCarType, $newCarClass,  $newCarPrice);
+        VehicleDB::insertNewCar($newCarYear, $newCarMake, $newCarModel, $newCarType, $newCarClass,  $newCarPrice);
     } elseif (!empty($newMake)) {
-        checkIfExistMake($newMake, getAllMakes());
+        checkIfExistMake($newMake, MakesDB::getAllMakes());
     } elseif (!empty($newType)) {
-        checkIfExistType($newType, getAllType());
+        checkIfExistType($newType, TypeDB::getAllType());
     } elseif (!empty($newClass)) {
         checkIfExistClass($newClass, ClassDB::getAllClasses());
     }
