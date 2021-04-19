@@ -19,7 +19,7 @@ require_once("../view/header.php");
 
 
 
-
+$validation = new validation();
 $action = filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING);
 
 $username = filter_input(INPUT_POST, "userName_Register");   //Check this for camel Case... May be a problem
@@ -29,10 +29,10 @@ $confirm_password = filter_input(INPUT_POST, "password_Register_Confirm");
 if(!empty($username) && !empty($password) && !empty($confirm_password)) {
     require_once("../util/valid_register.php");
     if(valid_username($username) && valid_password($password) && passwords_match($password,$confirm_password)){
-        add_admin($username, $password);
+        $validation -> add_admin($username, $password);
     }
     else{// Fix this 
-        echo valid_registration($username, $password, $confirm_password);
+        echo valid_registration($username, $password, $confirm_password)[0];
     }
 }
 

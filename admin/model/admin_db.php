@@ -1,6 +1,8 @@
 <?php
 /** Functions to add users and validates user credentials  */
-    function add_admin($userName, $password){
+
+class validation{
+    public static function add_admin($userName, $password){
         $db = Database::getDB();
         $hash = password_hash($password, PASSWORD_BCRYPT);
         $query = 'INSERT INTO administrators (userName,  password)
@@ -11,6 +13,18 @@
         $statement -> execute();
         $statement -> closeCursor();
     }
+}
+    // function add_admin($userName, $password){
+    //     $db = Database::getDB();
+    //     $hash = password_hash($password, PASSWORD_BCRYPT);
+    //     $query = 'INSERT INTO administrators (userName,  password)
+    //                 VALUES(:userName, :password)';
+    //     $statement = $db ->prepare($query);
+    //     $statement -> bindValue(":userName", $userName);
+    //     $statement -> bindValue(":password", $hash);
+    //     $statement -> execute();
+    //     $statement -> closeCursor();
+    // }
 
     function is_valid_admin_login($userName, $password){
         $db = Database::getDB();
