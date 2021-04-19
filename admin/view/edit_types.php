@@ -4,7 +4,7 @@
     <h2>Add Vehicle Type</h2>
     <form class="dropDownSection" action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST">
     <?php 
-        $chosenChart = getAllType();
+        $chosenChart = Typedb::getAllType();
         echo displayType($chosenChart);
     ?>
         <!--New car prize-->

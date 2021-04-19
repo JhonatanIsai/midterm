@@ -10,7 +10,7 @@
         <label for="newCarMake"> Make:</label>
         <select class="dropDown" name="newCarMake" id="newCarMake" default="field">
             <option value="" disabled selected>Choose Make</option>
-            <?php foreach (getAllMakes() as $makes) : ?>
+            <?php foreach (MakesDB::getAllMakes() as $makes) : ?>
                 <option class="option" value="<?php echo intval($makes["ID"]); ?>"><?php echo $makes["make"]; ?></option>
 
             <?php endforeach ?>
@@ -20,7 +20,7 @@
         <label for="newCarType"> Type:</label>
         <select class="dropDown" name="newCarType" id="newCarType" default="field">
             <option value="" disabled selected>Choose Type</option>
-            <?php foreach (getAllType() as $types) : ?>
+            <?php foreach (TypeDB::getAllType() as $types) : ?>
                 <option class="option" value="<?php echo intval($types["ID"]); ?>"><?php echo $types["type"]; ?></option>
 
             <?php endforeach ?>
@@ -30,7 +30,7 @@
         <label for="newCarClass"> Class:</label>
         <select class="dropDown" name="newCarClass" id="newCarClass" default="field">
             <option value="" disabled selected>Choose Class</option>
-            <?php foreach (getAllClasses() as $classes) : ?>
+            <?php foreach (ClassDB::getAllClasses() as $classes) : ?>
                 <option class="option" value="<?php echo intval($classes["ID"]); ?>"><?php echo $classes["class"]; ?></option>
 
             <?php endforeach ?>

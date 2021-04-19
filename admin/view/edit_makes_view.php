@@ -5,7 +5,7 @@
     <h2>Add Vehicle Make</h2>
     <form class="dropDownSection" action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST">
     <?php 
-        $chosenChart = getAllMakes();
+        $chosenChart = MakesDB::getAllMakes();
         echo displayMakes($chosenChart);
     ?>
         <!--New car prize-->

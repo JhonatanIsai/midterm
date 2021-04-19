@@ -4,7 +4,7 @@
     <form class="dropDownSection" action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST">
     <?php 
         $chosenChart = ClassDB::getAllClasses();
-        echo displayClassesDel($chosenChart);
+        echo ClassDB::  displayClassesDel($chosenChart);
     ?>
         <!--New car prize-->
         <h2>Add Vehicle Class</h2>

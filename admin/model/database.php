@@ -1,6 +1,4 @@
 <?php
-
-
     class Database{
 
         private static $dsn ="mysql:host=xlf3ljx3beaucz9x.cbetxkdyhwsb.us-east-1.rds.amazonaws.com;dbname=wpbv8ju2q3a1ag3f";
@@ -25,5 +23,3 @@
             return self :: $db;
         }
     }
-    
-?>

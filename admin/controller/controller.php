@@ -27,7 +27,7 @@
                     } elseif (!empty($orderYear) && !$orderPrice) {
                         $chosenChart = TypeDB::getTypeByYear($carType);
                     } else {
-                        $chosenChart = TypeDB::TygetAllByType($carType);
+                        $chosenChart = TypeDB::getAllByType($carType);
                     }
                 } elseif (!empty($carClass)) { //If car class received input
                     if (!empty($orderPrice) && !$orderYear) {
@@ -41,7 +41,7 @@
                     if (!empty($orderPrice) && !$orderYear) {
                         $chosenChart = MakesDB::getMakeByPrice($carMake);
                     } elseif (!empty($orderYear) && !$orderPrice) {
-                        $chosenChart = MakesDB::MakgetMakeByYear($carMake);
+                        $chosenChart = MakesDB::getMakeByYear($carMake);
                     } else {
                         $chosenChart = MakesDB::getAllByMake($carMake);
                     }
@@ -137,7 +137,7 @@ function checkIfExistMake($newMake, $array)
  }
  echo $Exist;
  if($Exist == False){
-    MakeDB::addMake($newMake);
+    MakesDB::addMake($newMake);
  }
 }
 

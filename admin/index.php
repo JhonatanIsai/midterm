@@ -76,7 +76,7 @@ if($_SESSION["is_valid_admin"] == false){
     } elseif ($MakeNumber) {
         MakesDB::removeMake($MakeNumber);
     } elseif ($TypeNumber) {
-        Type::removeType($TypeNumber);
+        TypeDB::removeType($TypeNumber);
     }
 
 

@@ -4,7 +4,7 @@
             <!--Selector for Types-->
             <select class="dropDown" name="dropDownType" id="dropDownType" default="field">
                 <option value="" disabled selected>Choose Type</option>
-                <?php foreach (getAllType() as $types) : ?>
+                <?php foreach (TypeDB::getAllType() as $types) : ?>
                     <option class="option" value="<?php echo intval($types["ID"]); ?>"><?php echo $types["type"]; ?></option>
 
                 <?php endforeach ?>
@@ -13,7 +13,7 @@
             <!--Selector for Makes-->
             <select class="dropDown" name="dropDownMake" id="dropDownMake" default="field">
                 <option value="" disabled selected>Choose Make</option>
-                <?php foreach (getAllMakes() as $makes) : ?>
+                <?php foreach (MakesDB::getAllMakes() as $makes) : ?>
                     <option class="option" value="<?php echo intval($makes["ID"]); ?>"><?php echo $makes["make"]; ?></option>
 
                 <?php endforeach ?>
