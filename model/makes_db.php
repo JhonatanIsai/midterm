@@ -1,7 +1,7 @@
 <?php
 function numberOfMakes()
 {
-    global $db;
+    $db = Database1::getDB();
     $query = "SELECT COUNT(*)
                 FROM Make";
     $get_Make = $db->Prepare($query);
@@ -13,7 +13,7 @@ function numberOfMakes()
 //Get name of all the manufaturers 
 function getAllMakes()
 {
-    global $db;
+    $db = Database1::getDB();
     $query = "SELECT * FROM Make";
     $get_Makes = $db->Prepare($query);
     $get_Makes->execute();
@@ -25,7 +25,7 @@ function getAllMakes()
 //Adds a new make 
 function addMake($make)
 {
-    global $db;
+    $db = Database1::getDB();
     $query = "INSERT INTO Make(ID, make)
     VALUES('', :make)";
     $statement = $db->prepare($query);
@@ -35,7 +35,7 @@ function addMake($make)
 }
 function removeMake($ID)
 {
-    global $db;
+    $db = Database1::getDB();
     $query = "DELETE FROM Make WHERE Make.ID= :ID";
     $statement = $db->prepare($query);
     $statement->bindValue(":ID", $ID);
@@ -48,7 +48,7 @@ function removeMake($ID)
 //Get All cars ordered by Make 
 function getAllByMake($make)
 {
-    global $db;
+    $db = Database1::getDB();
 
     $query = "SELECT year, model, price, type,class, make 
         FROM vehicles AS v 
@@ -68,7 +68,7 @@ function getAllByMake($make)
 //Get makes by price
 function getMakeByPrice($make)
 {
-    global $db;
+    $db = Database1::getDB();
 
     $query = "SELECT year, model, price, type,class, make 
             FROM vehicles AS v 
@@ -89,7 +89,7 @@ function getMakeByPrice($make)
 //Get makes by year
 function getMakeByYear($make)
 {
-    global $db;
+    $db = Database1::getDB();
 
     $query = "SELECT year, model, price, type,class, make 
             FROM vehicles AS v 

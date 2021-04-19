@@ -4,7 +4,8 @@
 
 function numberOfClass()
 {
-    global $db;
+   
+    $db = Database1::getDB();
     $query = "SELECT COUNT(*)
                     FROM class";
     $get_classes = $db->Prepare($query);
@@ -16,7 +17,7 @@ function numberOfClass()
 
 function getAllClasses()
 {
-    global $db;
+    $db = Database1::getDB();
     $query = "SELECT * FROM Class";
     $get_classes = $db->Prepare($query);
     $get_classes->execute();
@@ -29,7 +30,7 @@ function getAllClasses()
 
 function addClass($class)
 {
-    global $db;
+    $db = Database1::getDB();
 
     $query = "INSERT INTO Class(ID, class)
     VALUES('', :class)";
@@ -41,7 +42,7 @@ function addClass($class)
 
 function removeClass($ID)
 {
-    global $db;
+    $db = Database1::getDB();
     $query = "DELETE FROM Class WHERE class.ID = :ID";
     $statement = $db->prepare($query);
     $statement->bindValue(":ID", $ID);
@@ -54,7 +55,7 @@ function removeClass($ID)
 function getAllByClass($class)
 {
 
-    global $db;
+    $db = Database1::getDB();
     $query = "SELECT year, model, price, type,class, make 
             FROM vehicles AS v 
             INNER JOIN Type AS t ON v.type_id = t.ID 
@@ -72,7 +73,7 @@ function getAllByClass($class)
 //Get class by price
 function getClassByPrice($class)
 {
-    global $db;
+    $db = Database1::getDB();
 
     $query = "SELECT year, model, price, type,class, make 
             FROM vehicles AS v 
@@ -93,7 +94,7 @@ function getClassByPrice($class)
 //Get class by Year
 function getClassByYear($class)
 {
-    global $db;
+    $db = Database1::getDB();
 
     $query = "SELECT year, model, price, type,class, make 
             FROM vehicles AS v 

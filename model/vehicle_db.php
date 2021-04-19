@@ -1,7 +1,7 @@
 <?php
 function insertNewCar($year, $make, $model, $type, $class, $price){
 
-    require("model/database.php");
+    $db = Database1::getDB();
     $query = "INSERT INTO vehicles (year, model, price, type_id, class_id, make_id)
                     VALUES(:year, :model, :price, :type_id, :class_id, :make_id)";
     $statement = $db->prepare($query);

@@ -5,11 +5,11 @@ require("./controller/controller.php");
 require("./model/makes_db.php"); //Thisa works for all So far 
 require("./model/type_db.php");
 require("./model/classes_db.php"); // here if 
-
+require("../admin/model/admin_db.php");
 require("../admin/view/header.php");
-require("../model/database.php");
-require("../view/charts.php");
-require("./model/vehicle_db.php");
+require("../admin/model/database.php");
+require("../admin/view/charts.php");
+require("../admin/model/vehicle_db.php");
 
 require_once("./model/admin_db.php");
 

@@ -1,7 +1,7 @@
 <?php
 /** Functions to add users and validates user credentials  */
     function add_admin($userName, $password){
-        global $db;
+        $db = Database::getDB();
         $hash = password_hash($password, PASSWORD_BCRYPT);
         $query = 'INSERT INTO administrators (userName,  password)
                     VALUES(:userName, :password)';
@@ -13,7 +13,7 @@
     }
 
     function is_valid_admin_login($userName, $password){
-        global $db;
+        $db = Database::getDB();
         $query = 'SELECT password FROM administrators WHERE userName = :userName';
         $statement = $db -> prepare($query);
         $statement -> bindValue(":userName", $userName);
@@ -38,7 +38,7 @@
     }
 
     function username_exists($userName){
-        global $db;
+        $db = Database::getDB();
         $query = 'SELECT COUNT(*) from administrators WHERE userName = :userName';
         $statement = $db ->prepare($query);
         $statement -> bindValue(":userName", $userName);

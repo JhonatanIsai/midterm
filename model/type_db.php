@@ -2,7 +2,7 @@
 
 function numberOfTypes()
 {
-    global $db;
+    $db = Database1::getDB();
     $query = "SELECT COUNT(*)
                 FROM type";
     $get_type = $db->Prepare($query);
@@ -15,7 +15,7 @@ function numberOfTypes()
 //Get All type names 
 function getAllType()
 {
-    global $db;
+    $db = Database1::getDB();
     $query = "SELECT * FROM Type";
     $get_types = $db->Prepare($query);
     $get_types->execute();
@@ -26,7 +26,7 @@ function getAllType()
 //...................................................................................
 function addType($type)
 {
-    global $db;
+    $db = Database1::getDB();
     $query = "INSERT INTO Type(ID, type)
     VALUES('', :type)";
     $statement = $db->prepare($query);
@@ -37,7 +37,7 @@ function addType($type)
 
 function removeType($ID)
 {
-    global $db;
+    $db = Database1::getDB();
     $query = "DELETE FROM Type WHERE Type.ID = :ID";
     $statement = $db->prepare($query);
     $statement->bindValue(":ID", $ID);
@@ -49,7 +49,7 @@ function removeType($ID)
 //Get all the cars ordered by type 
 function getAllByType($type)
 {
-    global $db;
+    $db = Database1::getDB();
     $query = "SELECT year, model, price, type,class, make 
         FROM vehicles AS v 
         INNER JOIN Type AS t ON v.type_id = t.ID 
@@ -70,7 +70,7 @@ function getAllByType($type)
 //Get types by price
 function getTypeByPrice($type)
 {
-    global $db;
+    $db = Database1::getDB();
 
     $query = "SELECT year, model, price, type,class, make 
         FROM vehicles AS v 
@@ -91,7 +91,7 @@ function getTypeByPrice($type)
 //Get tpes by Year
 function getTypeByYear($type)
 {
-    global $db;
+    $db = Database1::getDB();
 
     $query = "SELECT year, model, price, type,class, make 
         FROM vehicles AS v 

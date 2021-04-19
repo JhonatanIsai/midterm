@@ -1,7 +1,7 @@
 <?php
     //Get all the cars ordered by year
         function getAllByYear(){
-            require("./model/database.php");
+            $db = Database1::getDB();
             $query = "SELECT year, model, price, type ,class, make 
             FROM vehicles AS v 
             INNER JOIN Type AS t ON v.type_id = t.ID 
@@ -18,7 +18,7 @@
         }
         //Get all the cars ordered by year
         function getAllByPrice(){
-            require("./model/database.php");
+            $db = Database1::getDB();
             $query = "SELECT year, model, price, type ,class, make 
             FROM vehicles AS v 
             INNER JOIN Type AS t ON v.type_id = t.ID 
