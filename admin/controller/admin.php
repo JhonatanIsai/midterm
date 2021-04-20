@@ -29,7 +29,7 @@ $confirm_password = filter_input(INPUT_POST, "password_Register_Confirm");
 
 if(!empty($username) && !empty($password) && !empty($confirm_password)) {
     require_once("../util/valid_register.php");
-    if(ValidRegister::valid_username($username) && ValidRegister::valid_password($password) && passwords_match($password,$confirm_password)){
+    if(ValidRegister::check_username($username) && ValidRegister::check_Password($password) && ValidRegister::check_Matching($password, $confirm_password)){
         Validation::add_admin($username, $password);
     }
     else{// Fix this 
